@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js "></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practical_10</title>
+</head>
+
+
+<body>
+    <div ng-app="myApp" ng-controller="MyCtrl">
+        <b>Enter Product Name: </b><input type="text" ng- model="product_name" id="product_name" placeholder="name"><br><br>
+        <b>Enter Quantity: </b><input type="text" ng- model="quantity" id="quantity" placeholder="quantity"><br><br>
+        <b>Enter Price: </b><input type="text" ng-model="price" id="price" placeholder="price"><br><br>
+        <button ng-click="add()">Add</button><br><br>
+        <table border="1">
+            <tr>
+                <th ng-click="orderByMe('name')">Product Name</th>
+                <th ng-click="orderByMe('quantity')">Quantity</th>
+                <th ng-click="orderByMe('price')">Price</th>
+            </tr>
+            <tr ng-repeat="x in products | orderBy:myOrderBy">
+                <td>{{x.name}}</td>
+                <td>{{x.quantity}}</td>
+                <td>{{x.price}}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var app = angular.module('myApp', []); app.controller('MyCtrl', function ($scope) {
+            $scope.products = [];
+            $scope.add = function () {
+                let name = document.getElementById('product_name').value;
+                let quantity = parseInt(document.getElementById('quantity').value); let price = parseInt(document.getElementById('price').value);
+                $scope.products.push({ "name": name, "quantity": quantity, "price": price });
+                $scope.product_name = "";
+                $scope.quantity = "";
+                $scope.price = "";
+
+            };
+            $scope.orderByMe = function (x) {
+                $scope.myOrderBy = x;
+
+            };
+        });
+    </script>
+</body>
+
+</html>

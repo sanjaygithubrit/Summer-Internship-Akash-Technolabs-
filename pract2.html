@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>practical_2</title>
+<style>
+.container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.item {
+margin: 10px 0px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="item">
+<label for="name">Name:</label>
+<input type="text" name="name" id="name" placeholder="enter name">
+</div>
+<div class="item">
+<label for="name">Email:</label>
+<input type="email" name="email" id="email" placeholder="enter email">
+</div>
+<div class="item">
+<label for="name">Mobile No:</label>
+<input type="number" name="mobile" id="mobile" placeholder="enter mobile">
+</div>
+<div class="item">
+<label for="name">Gender:</label>
+<label for="male">Male</label>
+<input type="radio" name="gender" id="male" value="male">
+<label for="female">Female</label>
+<input type="radio" name="gender" id="female" value="female">
+</div>
+<div class="item">
+<label for="color">Color:</label>
+<input  name="color" id="color">
+</div>
+<div class="item">
+<textarea name="ans" id="ans" cols="40" rows="15" placeholder="detail"></textarea>
+</div>
+<div class="item">
+<button class="btn" id="btn">Submit</button>
+</div>
+</div>
+<!-- java script -->
+<script>
+document.getElementById('btn').addEventListener('click', displayText);
+function displayText() {
+let str = "";
+str += "name:";
+str += document.getElementById('name').value;
+str += "\nemail:";
+str += document.getElementById('email').value;
+str += "\ngender:";
+str += getGender();
+str += "\nmobile:";
+str += document.getElementById('mobile').value;
+str += "\ncolor:";
+str += document.getElementById('color').value;
+document.getElementById("ans").value = str;
+}
+function getGender() {
+let radio = document.getElementsByName("gender");
+let gender;
+for (let i = 0; i < radio.length; i++) {
+if (radio[i].checked) {
+gender = radio[i].value;
+}
+}
+return gender;
+}
+</script>
+</body>
+
+</html>
